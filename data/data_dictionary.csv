@@ -1,0 +1,24 @@
+table,field,type,definition,unit_or_example
+fact_sales,date,date,Lunes de inicio de la semana comercial,YYYY-MM-DD
+fact_sales,week_id,integer,Identificador secuencial de semana,1-104
+fact_sales,year_week,text,Semana ISO legible,2026-W35
+fact_sales,pdv_id,text,Llave del punto de venta,PDV-001
+fact_sales,sku,text,Llave del producto,CFCL-355
+fact_sales,units_ordered,integer,Unidades solicitadas por el cliente,unidades
+fact_sales,units_delivered,integer,Unidades efectivamente entregadas,unidades
+fact_sales,units_sold,integer,Unidades vendidas al consumidor,unidades
+fact_sales,list_price,decimal,Precio de lista por unidad,MXN
+fact_sales,discount_pct,decimal,Descuento aplicado; 0.10 equivale a 10%,0-0.15
+fact_sales,net_price,decimal,Precio despues del descuento,MXN
+fact_sales,unit_cost,decimal,Costo variable unitario,MXN
+fact_sales,revenue,decimal,units_sold x net_price,MXN
+fact_sales,cost_of_sales,decimal,units_sold x unit_cost,MXN
+fact_sales,contribution,decimal,revenue - cost_of_sales,MXN
+fact_sales,opening_inventory,integer,Inventario al inicio de la semana,unidades
+fact_sales,ending_inventory,integer,Inventario al cierre de la semana,unidades
+fact_sales,promotion_flag,integer,Indicador de promocion,0/1
+fact_sales,numeric_distribution,decimal,Disponibilidad relativa del SKU en el PDV,0-1
+dim_product,true_own_elasticity,decimal,Parametro usado solo para generar los datos sinteticos,negativo
+elasticities_estimated,estimated_own_elasticity,decimal,Coeficiente estimado del logaritmo del precio,elasticidad
+forecast_metrics,wape,decimal,Error absoluto ponderado,0-1
+forecast_metrics,bias,decimal,Sesgo: forecast menos real dividido entre real,decimal

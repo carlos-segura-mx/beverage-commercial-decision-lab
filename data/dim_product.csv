@@ -1,0 +1,7 @@
+sku,product,category,pack_ml,base_list_price,base_unit_cost,true_own_elasticity,launch_date
+CFCL-355,Cafe Clasico,Cafe listo para tomar,355,35.0,16.5,-1.75,2024-01-15
+CFVN-355,Cafe Vainilla,Cafe listo para tomar,355,38.0,18.2,-1.95,2024-01-15
+CFMO-355,Cafe Moka,Cafe listo para tomar,355,40.0,19.5,-2.1,2024-01-15
+TELM-500,Te Limon,Te listo para tomar,500,28.0,12.5,-1.4,2024-01-15
+FRTR-500,Bebida Frutal,Bebida saborizada,500,30.0,13.8,-1.6,2024-01-15
+ENRG-473,Energetica,Bebida energetica,473,45.0,23.0,-1.2,2024-01-15

@@ -1,0 +1,33 @@
+{
+  "seed": 20260831,
+  "dataset_shape_and_range": [
+    [
+      37440,
+      19
+    ],
+    "2024-09-02",
+    "2026-08-24"
+  ],
+  "rows": 37440,
+  "weeks": 104,
+  "products": 6,
+  "points_of_sale": 60,
+  "total_revenue": 15377349.030000001,
+  "total_contribution": 8024761.830000001,
+  "overall_margin_pct": 0.5218559983482407,
+  "overall_service_level": 0.9632224883781118,
+  "best_forecast_method": "Promedio movil 8s",
+  "best_forecast_wape": 0.05802837798996736,
+  "best_forecast_bias": 0.039914616523937525,
+  "scenario": {
+    "base_volume": 4094.125,
+    "simulated_volume": 4173.418970341551,
+    "base_revenue": 153111.10951302084,
+    "simulated_revenue": 152371.64733257183,
+    "base_contribution": 80746.19966927082,
+    "simulated_contribution": 78655.73411578956,
+    "delta_volume_pct": 0.019367745328135122,
+    "delta_revenue_pct": -0.004829578877724283,
+    "delta_contribution_pct": -0.025889336737129676
+  }
+}

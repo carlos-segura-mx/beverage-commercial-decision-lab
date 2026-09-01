@@ -1,0 +1,108 @@
+{
+  "products": [
+    {
+      "sku": "CFCL-355",
+      "product": "Cafe Clasico",
+      "base_price": 37.359249999999996,
+      "unit_cost": 17.515,
+      "base_volume": 877.0,
+      "own_elasticity": -1.096727141864895,
+      "default_discount": 0.1
+    },
+    {
+      "sku": "CFVN-355",
+      "product": "Cafe Vainilla",
+      "base_price": 40.620583333333336,
+      "unit_cost": 19.322499999999998,
+      "base_volume": 644.25,
+      "own_elasticity": -1.1347540662705797,
+      "default_discount": 0.0
+    },
+    {
+      "sku": "CFMO-355",
+      "product": "Cafe Moka",
+      "base_price": 42.70016666666667,
+      "unit_cost": 20.7025,
+      "base_volume": 529.25,
+      "own_elasticity": -1.7414602822617617,
+      "default_discount": 0.0
+    },
+    {
+      "sku": "TELM-500",
+      "product": "Te Limon",
+      "base_price": 29.867395833333333,
+      "unit_cost": 13.27125,
+      "base_volume": 820.625,
+      "own_elasticity": -0.7380203197985437,
+      "default_discount": 0.0
+    },
+    {
+      "sku": "FRTR-500",
+      "product": "Bebida Frutal",
+      "base_price": 32.068895833333336,
+      "unit_cost": 14.651250000000001,
+      "base_volume": 732.625,
+      "own_elasticity": -0.9368512160694873,
+      "default_discount": 0.0
+    },
+    {
+      "sku": "ENRG-473",
+      "product": "Energetica",
+      "base_price": 48.072937499999995,
+      "unit_cost": 24.41875,
+      "base_volume": 490.375,
+      "own_elasticity": -0.7034201764922716,
+      "default_discount": 0.0
+    }
+  ],
+  "elasticity_matrix": [
+    [
+      -1.096727141864895,
+      0.18,
+      0.1,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.18,
+      -1.1347540662705797,
+      0.18,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.1,
+      0.18,
+      -1.7414602822617617,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      -0.7380203197985437,
+      0.14,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.14,
+      -0.9368512160694873,
+      0.05
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.05,
+      -0.7034201764922716
+    ]
+  ]
+}
