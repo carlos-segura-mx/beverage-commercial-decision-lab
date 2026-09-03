@@ -59,13 +59,10 @@ Power BI operating model and executive communication
 |---|---|---|
 | Synthetic dataset | [`data/fact_sales.csv`](data/fact_sales.csv) and dimensions | Reproducible sales, pricing, service and inventory data |
 | Data dictionary | [`data/Diccionario_de_Datos.md`](data/Diccionario_de_Datos.md) | Grain, definitions and data-quality rules |
-#| Excel simulator | [`excel/Simulador_Precios_Bebidas.xlsx`](excel/Simulador_Precios_Bebidas.xlsx) | What-if analysis of discounts, elasticity, cannibalization and contribution |
 | Forecasting notebook | [`notebook/Modelado_Demanda_Elasticidad.ipynb`](notebook/Modelado_Demanda_Elasticidad.ipynb) | Forecast comparison and log-log price-elasticity estimation |
 | SQL analysis | [`sql/Analisis_Comercial.sql`](sql/Analisis_Comercial.sql) | KPIs, product ranking, forecast accuracy, operational risk and quality controls |
 | DAX measures | [`powerbi/Medidas_DAX.md`](powerbi/Medidas_DAX.md) | Commercial, service-level and forecasting measures |
 | Power BI wireframe | [`powerbi/PowerBI_Wireframe.md`](powerbi/PowerBI_Wireframe.md) | Dashboard pages, visual positions, fields and interaction rules |
-#| Executive case study | [`executive/Carlos_Segura_Caso_Analitica_Bebidas.pdf`](executive/Carlos_Segura_Caso_Analitica_Bebidas.pdf) | Six-slide executive summary |
-#| Editable presentation | [`executive/Carlos_Segura_Caso_Analitica_Bebidas.pptx`](executive/Carlos_Segura_Caso_Analitica_Bebidas.pptx) | Editable presentation with speaker notes |
 
 ### Data model
 
