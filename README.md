@@ -122,23 +122,23 @@ A production-level pricing analysis would also need to address:
 
 ### Excel what-if simulator
 
-The Excel simulator combines:
+#The Excel simulator combines:
 
-- estimated own-price elasticities;
-- cross-product substitution and cannibalization assumptions;
-- baseline prices, costs and volumes;
-- user-defined discount scenarios;
-- portfolio-level revenue and contribution calculations.
+#- estimated own-price elasticities;
+#- cross-product substitution and cannibalization assumptions;
+#- baseline prices, costs and volumes;
+#- user-defined discount scenarios;
+#- portfolio-level revenue and contribution calculations.
 
-Editable inputs are highlighted in yellow. Calculated results show the expected effect on:
+#Editable inputs are highlighted in yellow. Calculated results show the expected effect on:
 
-- price;
-- volume;
-- net revenue;
-- contribution;
-- total portfolio performance.
+#- price;
+#- volume;
+#- net revenue;
+#- contribution;
+#- total portfolio performance.
 
-The simulator is intended for scenario exploration. It should not be interpreted as a causal pricing recommendation without additional validation.
+#The simulator is intended for scenario exploration. It should not be interpreted as a causal pricing recommendation without additional #validation.
 
 ### SQL analysis
 
@@ -249,9 +249,9 @@ Combina análisis descriptivo, pronóstico de demanda y simulación de precios p
 
 El proyecto fue diseñado para responder cuatro preguntas de negocio:
 
-1. ¿Cómo evolucionan la venta, contribución y nivel de servicio por producto, canal y zona?
+1. ¿Cómo evolucionan la venta, el margen bruto y nivel de servicio por producto, canal y zona?
 2. ¿Qué método proporciona la línea base más confiable para anticipar la demanda de corto plazo?
-3. ¿Cómo podría un cambio de precio afectar el volumen, la venta y la contribución del portafolio?
+3. ¿Cómo podría un cambio de precio afectar el volumen, la venta y la el margen del portafolio?
 4. ¿Cómo deben traducirse los resultados analíticos en una rutina práctica de seguimiento comercial?
 
 ### Resultados principales
@@ -285,13 +285,10 @@ Modelo operativo en Power BI y comunicación ejecutiva
 |---|---|---|
 | Dataset sintético | [`data/fact_sales.csv`](data/fact_sales.csv) y dimensiones | Datos reproducibles de ventas, precio, servicio e inventario |
 | Diccionario de datos | [`data/Diccionario_de_Datos.md`](data/Diccionario_de_Datos.md) | Granularidad, definiciones y reglas de calidad |
-| Simulador Excel | [`excel/Simulador_Precios_Bebidas.xlsx`](excel/Simulador_Precios_Bebidas.xlsx) | Análisis What-If de descuentos, elasticidad, canibalización y contribución |
 | Notebook analítico | [`notebook/Modelado_Demanda_Elasticidad.ipynb`](notebook/Modelado_Demanda_Elasticidad.ipynb) | Comparación de forecast y estimación log-log de elasticidad |
 | Consultas SQL | [`sql/Analisis_Comercial.sql`](sql/Analisis_Comercial.sql) | KPI, ranking, precisión del forecast, riesgo operativo y controles de calidad |
 | Medidas DAX | [`powerbi/Medidas_DAX.md`](powerbi/Medidas_DAX.md) | Medidas comerciales, de servicio y forecast |
 | Wireframe de Power BI | [`powerbi/PowerBI_Wireframe.md`](powerbi/PowerBI_Wireframe.md) | Páginas, posiciones, campos e interacciones del dashboard |
-| Caso ejecutivo | [`executive/Carlos_Segura_Caso_Analitica_Bebidas.pdf`](executive/Carlos_Segura_Caso_Analitica_Bebidas.pdf) | Resumen ejecutivo de seis láminas |
-| Presentación editable | [`executive/Carlos_Segura_Caso_Analitica_Bebidas.pptx`](executive/Carlos_Segura_Caso_Analitica_Bebidas.pptx) | Presentación editable con notas del expositor |
 
 ### Modelo de datos
 
@@ -348,23 +345,23 @@ Un análisis productivo de pricing también debería considerar:
 
 ### Simulador What-If en Excel
 
-El simulador de Excel combina:
+#El simulador de Excel combina:
 
-- elasticidades precio propias estimadas;
-- supuestos de sustitución y canibalización entre productos;
-- precios, costos y volúmenes base;
-- escenarios de descuento definidos por el usuario;
-- cálculos de venta y contribución para el portafolio.
+#- elasticidades precio propias estimadas;
+#- supuestos de sustitución y canibalización entre productos;
+#- precios, costos y volúmenes base;
+#- escenarios de descuento definidos por el usuario;
+#- cálculos de venta y contribución para el portafolio.
 
-Las entradas editables están identificadas en amarillo. Los resultados calculados muestran el efecto esperado sobre:
+#Las entradas editables están identificadas en amarillo. Los resultados calculados muestran el efecto esperado sobre:
 
-- precio;
-- volumen;
-- venta neta;
-- contribución;
-- desempeño total del portafolio.
+#- precio;
+#- volumen;
+#- venta neta;
+#- contribución;
+#- desempeño total del portafolio.
 
-El simulador está diseñado para explorar escenarios. No debe interpretarse como una recomendación causal de precios sin validaciones adicionales.
+#El simulador está diseñado para explorar escenarios. No debe interpretarse como una recomendación causal de precios sin validaciones #adicionales.
 
 ### Análisis SQL
 
@@ -449,7 +446,7 @@ Abre el notebook:
 jupyter notebook notebook/Modelado_Demanda_Elasticidad.ipynb
 ```
 
-El simulador Excel, la presentación y el PDF ya están construidos y pueden revisarse sin ejecutar código.
+#El simulador Excel, la presentación y el PDF ya están construidos y pueden revisarse sin ejecutar código.
 
 ### Limitaciones
 
