@@ -117,26 +117,6 @@ A production-level pricing analysis would also need to address:
 - portfolio mix;
 - controlled experiments or quasi-experimental designs.
 
-### Excel what-if simulator
-
-#The Excel simulator combines:
-
-#- estimated own-price elasticities;
-#- cross-product substitution and cannibalization assumptions;
-#- baseline prices, costs and volumes;
-#- user-defined discount scenarios;
-#- portfolio-level revenue and contribution calculations.
-
-#Editable inputs are highlighted in yellow. Calculated results show the expected effect on:
-
-#- price;
-#- volume;
-#- net revenue;
-#- contribution;
-#- total portfolio performance.
-
-#The simulator is intended for scenario exploration. It should not be interpreted as a causal pricing recommendation without additional #validation.
-
 ### SQL analysis
 
 The SQL file includes examples for:
@@ -339,26 +319,6 @@ Un análisis productivo de pricing también debería considerar:
 - precios de la competencia;
 - mezcla del portafolio;
 - experimentos controlados o diseños cuasiexperimentales.
-
-### Simulador What-If en Excel
-
-#El simulador de Excel combina:
-
-#- elasticidades precio propias estimadas;
-#- supuestos de sustitución y canibalización entre productos;
-#- precios, costos y volúmenes base;
-#- escenarios de descuento definidos por el usuario;
-#- cálculos de venta y contribución para el portafolio.
-
-#Las entradas editables están identificadas en amarillo. Los resultados calculados muestran el efecto esperado sobre:
-
-#- precio;
-#- volumen;
-#- venta neta;
-#- contribución;
-#- desempeño total del portafolio.
-
-#El simulador está diseñado para explorar escenarios. No debe interpretarse como una recomendación causal de precios sin validaciones #adicionales.
 
 ### Análisis SQL
 
