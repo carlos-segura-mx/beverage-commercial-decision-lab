@@ -1,0 +1,33 @@
+name: Verify beverage commercial lab
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/quality.yml'
+      - 'app.py'
+      - 'src/**'
+      - 'tests/**'
+      - 'data/**'
+      - 'docs/**'
+      - 'README.md'
+      - 'requirements.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile Python files
+        run: python -m compileall -q app.py src tests
+      - name: Run analytical and editorial tests
+        run: python -m pytest -q
