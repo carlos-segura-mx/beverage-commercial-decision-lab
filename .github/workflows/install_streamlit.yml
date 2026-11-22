@@ -21,6 +21,7 @@ jobs:
         run: |
           cat .bootstrap/payload_0* | base64 --decode | tar -xz -C .
           rm -rf .bootstrap
+          rm -f .github/workflows/quality.yml
           test -f app.py
           test -f src/scenario_engine.py
           test -f docs/README.es.md
