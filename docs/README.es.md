@@ -1,6 +1,6 @@
 # Laboratorio de decisiones comerciales para bebidas
 
-**Cuando una promoción incrementa las unidades, pero reduce la contribución, ¿cómo conviene evaluar la decisión?**
+**¿Dónde se genera contribución, qué puntos de venta requieren revisión y cuándo un descuento produce volumen sin valor?**
 
 [Español](README.es.md) | [English](../README.md) | [Metodología](methodology.es.md) | [Datos y supuestos](data_provenance.md)
 
@@ -30,17 +30,22 @@ En el escenario de referencia, un **descuento de 10 % en Café Clásico** cambia
 
 La conclusión comercial es que no basta con evaluar una promoción por el aumento de unidades. También debemos revisar las ventas y la contribución. Estas cifras dependen de costos y elasticidades sintéticas; no son una recomendación de descuento para un mercado real.
 
-## Explorar la aplicación Streamlit
+## Explorar el dashboard comercial
 
-La aplicación bilingüe abre con el **Simulador de precios**. Permite configurar descuentos de 0 % a 20 % por producto, activar o desactivar los efectos cruzados y comparar el portafolio antes y después del cambio. Incluye:
+[Abrir la aplicación bilingüe en Streamlit](https://beverage-commercial-decision-lab-k9yerefuyjpyvgpjke7zny.streamlit.app/).
 
-- Precios, volúmenes, participaciones, ventas y contribución base y simulados por producto.
-- Totales del portafolio, diferencias y descarga CSV.
-- Separación de efectos propios del precio y efectos entre productos.
-- Matriz de elasticidades y curvas de sensibilidad de descuentos.
-- Vistas complementarias de desempeño comercial y evaluación histórica de pronósticos.
+La aplicación incluye seis secciones para analizar decisiones comerciales:
 
-**Publicación:** en Streamlit Community Cloud se selecciona este repositorio, rama `main` y archivo principal `app.py`. La URL se incorporará cuando esté desplegada y comprobada.
+1. **Panorama ejecutivo:** ventas, contribución, unidades, servicio ponderado, tendencias semanales y comparación con el periodo anterior de igual duración cuando hay datos.
+2. **Desempeño comercial:** rankings por producto y punto de venta, comparaciones por canal y zona, y descarga de resultados.
+3. **Servicio y oportunidades:** revisión del cumplimiento de entregas y revisión independiente de puntos con bajo volumen frente a pares del mismo SKU y canal.
+4. **Pronósticos:** comparación histórica de modelos, WAPE y sesgo por producto, y cantidades observadas frente a los pronósticos en ocho semanas de evaluación.
+5. **Simulador de precios:** descuentos simultáneos de 0 % a 20 %, sustitución opcional, impacto en el portafolio y análisis de sensibilidad.
+6. **Metodología:** supuestos, definiciones y límites.
+
+Las primeras tres secciones comparten filtros de fechas, canal, zona y producto. La vista inicial presenta las **últimas 13 semanas sintéticas**. Los indicadores generales anteriores cubren las 104 semanas. El simulador y la evaluación de pronósticos conservan sus propias bases para no alterar sus resultados al filtrar.
+
+Las listas de revisión son señales para investigar, no pronósticos de desabasto, ventas perdidas, ingresos incrementales u oportunidades reales.
 
 ## Cómo se calcula
 

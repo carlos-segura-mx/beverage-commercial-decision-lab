@@ -10,6 +10,14 @@ La pregunta central es si una promoción de precios mejora la contribución del 
 
 El caso reúne 104 semanas indexadas (con fechas simuladas), 60 puntos de venta, seis productos y 37,440 registros por punto de venta, SKU y semana. Las ventas sintéticas son unidades vendidas al consumidor multiplicadas por el precio neto supuesto. La contribución resta el costo de venta sintético. No equivale a utilidad operativa ni al margen del distribuidor.
 
+## Metodología del dashboard comercial
+
+Las secciones comerciales comparten filtros de fechas, canal, zona y SKU. La vista inicial abarca las últimas 13 semanas sintéticas. Ventas, contribución y unidades se agregan por suma. El margen divide la contribución total entre las ventas simuladas al consumidor. El nivel de servicio divide las unidades entregadas totales entre las solicitadas, sin promediar porcentajes por punto de venta.
+
+Cuando existe un periodo anterior de igual duración bajo los mismos filtros, el panorama ejecutivo calcula las variaciones de ventas, contribución y unidades. En caso contrario, no se presenta comparación. Las unidades sin entregar no se convierten en supuestas ventas perdidas.
+
+La lista de entregas identifica pares PDV/SKU bajo un umbral ajustable de servicio, sujetos a una cantidad mínima solicitada. La revisión comercial identifica pares con servicio de al menos 95 % y volumen situado en el cuartil inferior de sus pares del mismo producto y canal, con un mínimo de cuatro puntos comparables. Son reglas descriptivas, no pronósticos de demanda ni efectos causales. No se usan inventarios sin continuidad.
+
 ## Simulador de precios
 
 Para un producto i con precio P_i, volumen Q_i y costo unitario C_i, se elige descuento d_i entre 0 y 0.20. El cambio proporcional del precio es -d_i. Se aplica una respuesta lineal:

@@ -2,7 +2,7 @@
 
 [English README](../README.md) | [README en español](README.es.md)
 
-The primary deliverable is a bilingual Streamlit application. The repository includes automated tests for the data grain, reference totals, scenario calculations, discount bounds, cross-product effects, public copy and the Streamlit app in both languages.
+The primary deliverable is a bilingual Streamlit application with six views. The commercial module aggregates weighted delivery service and keeps unreconciled stock balances out of all review indicators. The repository includes automated tests for the data grain, reference totals, scenario calculations, discount bounds, cross-product effects, public copy and the Streamlit app in both languages.
 
 ## Quantitative reference scenario
 
@@ -19,10 +19,10 @@ The test suite compares the entire-portfolio scenario with the stored reference,
 
 ## Verification boundaries
 
-- Unit and data tests verify model calculations and CSV integrity, not market truth.
+- Unit and data tests verify model calculations and CSV integrity, not market truth. Commercial KPI and review rules are independently tested; output is descriptive, not economic forecasts.
 - A GitHub Actions pass verifies the Python test suite. It does not independently validate Power BI formulas, cross-filter behavior, screenshots or live cloud rendering.
 - The PBIX remains a historical complementary artifact, not a validated source of truth for this Streamlit release.
-- No deployment URL or screenshot should be published before the deployed app has been opened and checked.
+- The previous deployed app was observed in a user-provided screenshot. The six-view revision requires a new visual deployment check after publication.
 - If the historic generator is rerun, review its output changes before updating a release.
 
 To run the checks locally:

@@ -10,6 +10,14 @@ The central question is whether a price promotion improves portfolio contributio
 
 The case has 104 indexed weekly periods (with simulated dates), 60 points of sale, six beverage products and 37,440 point-of-sale, SKU and week records. Synthetic sell-out revenue is units sold to the consumer times a synthetic net price. Contribution is this revenue minus synthetic cost of sales, not operating profit or distributor margin.
 
+## Commercial dashboard methodology
+
+Commercial views use shared date, channel, region and SKU filters. The default is the final 13 synthetic weeks. Revenue, contribution and units are additive. Contribution margin divides the total contribution by total sell-out revenue. Service divides total units delivered by total units ordered rather than averaging outlet ratios.
+
+If an equally long preceding period exists under the same filters, the executive view shows relative changes for revenue, contribution and units. Otherwise no comparison is calculated. Undelivered units are not monetized as lost sales.
+
+The delivery-review list highlights outlet/SKU pairs below a configurable service threshold, subject to a minimum number of ordered units. The commercial-review list flags pairs with service of at least 95% and units in the bottom quartile of same-product and same-channel peers, requiring four comparable outlets. These are descriptive review rules, not demand forecasts or causal estimates. The dashboard excludes unreconciled inventory balances.
+
 ## Price what-if model
 
 For product i, with price P_i, volume Q_i and unit cost C_i, enter discount d_i in 0 to 0.20. Its proportional price change is -d_i. The tool applies a linear response:

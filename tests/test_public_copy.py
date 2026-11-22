@@ -6,6 +6,7 @@ PUBLIC=[
     ROOT/"README.md",ROOT/"docs"/"README.es.md",
     ROOT/"docs"/"methodology.md",ROOT/"docs"/"methodology.es.md",
     ROOT/"docs"/"data_provenance.md",ROOT/"docs"/"validation.md",ROOT/"app.py",
+    ROOT/"src"/"commercial_dashboard.py",
 ]
 
 def test_public_copy_has_no_long_dashes():

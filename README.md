@@ -1,6 +1,6 @@
 # Beverage Commercial Decision Lab
 
-**When a promotion boosts units but reduces contribution, how should a commercial team decide what to do?**
+**Where does contribution come from, which outlets deserve review, and when does a discount create volume without value?**
 
 [English](README.md) | [Español](docs/README.es.md) | [Methodology](docs/methodology.md) | [Data and assumptions](docs/data_provenance.md)
 
@@ -30,17 +30,22 @@ In the reference price scenario, a **10% discount on Classic Coffee** changes th
 
 The practical lesson is to evaluate volume, revenue and contribution together rather than judge a promotion from units alone. These outputs are conditional on simulated costs and price elasticities; they are not a recommended discount for a real market.
 
-## Explore the Streamlit application
+## Explore the commercial dashboard
 
-The bilingual application places the **Price Simulator** first. A planner can set discounts of 0% to 20% for each of the six products, enable or disable cross-product effects and compare the full portfolio before and after the change. The simulator includes:
+[Open the live bilingual Streamlit app](https://beverage-commercial-decision-lab-k9yerefuyjpyvgpjke7zny.streamlit.app/).
 
-- Current and simulated prices, volumes, shares, sales and contribution by product.
-- Portfolio totals and differences, with CSV export.
-- Decomposition of own-price and cross-product volume effects.
-- A six-product elasticity matrix and discount sensitivity curves.
-- Supporting views of commercial performance and historical forecast evaluation.
+The application now includes six connected decision views:
 
-**Deployment:** open Streamlit Community Cloud, select this repository, choose `main` and use `app.py` as the entry point. A public dashboard link will be added only after the deployment is verified.
+1. **Executive Overview:** revenue, contribution, units, weighted service, weekly trends and comparison with an equally long preceding period where available.
+2. **Commercial Performance:** product and outlet rankings, channel and region comparisons, and a downloadable outlet breakdown.
+3. **Service & Opportunities:** service reviews based on delivered versus ordered units, and separate reviews of low-volume outlets against same-product, same-channel peers.
+4. **Forecasting:** historical model comparison, product-level WAPE and bias, and observed versus predicted quantities in the eight-week holdout.
+5. **Price Simulator:** concurrent 0% to 20% discounts for six products, optional substitution assumptions, portfolio impacts and sensitivity analysis.
+6. **Methodology:** assumptions, definitions and interpretation limits.
+
+The first three views share date, channel, region and product filters. By default they display the latest **13 synthetic weeks**. The 104-week figures above refer to the full dataset. The simulator and forecast evaluation retain their own historical bases and are not silently changed by the commercial filters.
+
+The service and commercial lists are prompts for investigation. They are not predicted stockouts, lost sales, incremental revenue or real customer opportunities.
 
 ## How the model works
 

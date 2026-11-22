@@ -8,6 +8,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from src.scenario_engine import discount_curve, load_model, simulate
+from src.commercial_dashboard import filtered_sales, render_executive, render_commercial, render_service
 
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
@@ -62,15 +63,16 @@ st.caption(T(
     "CS Intelligence | Synthetic commercial case | Pricing, demand and contribution"
 ))
 st.write(T(
-    "¿Cuándo un cambio de precio mejora el volumen, pero perjudica la contribución?",
-    "When does a price change increase volume but reduce contribution?"
+    "¿Dónde se genera contribución, qué puntos requieren revisión y cómo afecta un descuento al portafolio?",
+    "Where does contribution come from, which outlets deserve review, and how would a discount affect the portfolio?"
 ))
 
 tabs = st.tabs([
-    T("Simulador de precios", "Price Simulator"),
     T("Panorama ejecutivo", "Executive Overview"),
-    T("Cartera y canales", "Portfolio & Channels"),
+    T("Desempeño comercial", "Commercial Performance"),
+    T("Servicio y oportunidades", "Service & Opportunities"),
     T("Pronósticos", "Forecasting"),
+    T("Simulador de precios", "Price Simulator"),
     T("Metodología", "Methodology"),
 ])
 
@@ -82,7 +84,7 @@ def change_presets(preset: str) -> None:
         )
 
 
-with tabs[0]:
+with tabs[4]:
     st.subheader(T("Simulador de descuentos y elasticidades", "Discount and elasticity simulator"))
     st.write(T(
         "Modifica los descuentos de varios productos y compara el resultado con el escenario sin cambios. "
@@ -296,8 +298,9 @@ try:
     weekly=load_csv("weekly_sales.csv",("date",))
     metrics=load_csv("forecast_metrics.csv")
     future=load_csv("forecast_future.csv",("date",))
+    holdout=load_csv("forecast_holdout.csv",("date",))
 except (FileNotFoundError, ValueError) as exc:
-    with tabs[1]:
+    with tabs[0]:
         st.error(T("No se encontraron todos los datos para los módulos históricos.",
                    "Some data needed for historical modules are missing."))
         st.code(str(exc))
@@ -306,80 +309,23 @@ except (FileNotFoundError, ValueError) as exc:
 fact=fact.merge(customers[["pdv_id","channel","zone"]],on="pdv_id",how="left",validate="many_to_one")
 labels=products.set_index("sku")["product"].to_dict()
 
+bi_filtered,bi_previous,bi_start,bi_end=filtered_sales(fact,T,name_of)
+
+with tabs[0]:
+    render_executive(bi_filtered,bi_previous,bi_start,bi_end,T,name_of)
+
 with tabs[1]:
-    st.subheader(T("¿Dónde se genera contribución?", "Where does contribution come from?"))
-    st.caption(T(
-        "Las cifras son ventas simuladas al consumidor (sell-out), no ingresos verificados de un distribuidor.",
-        "Numbers represent synthetic consumer sell-out, not verified distributor revenue."
-    ))
-    ca,zb=st.columns(2)
-    with ca:
-        channel=st.selectbox(T("Canal","Channel"),
-                             ["all"]+sorted(fact.channel.dropna().unique().tolist()),
-                             format_func=lambda x:T("Todos","All") if x=="all" else x,
-                             key="overview_channel")
-    with zb:
-        zone=st.selectbox(T("Zona","Zone"),
-                          ["all"]+sorted(fact.zone.dropna().unique().tolist()),
-                          format_func=lambda x:T("Todas","All") if x=="all" else x,
-                          key="overview_zone")
-    slice_df=fact.copy()
-    if channel!="all":slice_df=slice_df.loc[slice_df.channel.eq(channel)]
-    if zone!="all":slice_df=slice_df.loc[slice_df.zone.eq(zone)]
-    revenue=float(slice_df.revenue.sum()); contrib=float(slice_df.contribution.sum())
-    units=float(slice_df.units_sold.sum())
-    service=float(slice_df.units_delivered.sum()/slice_df.units_ordered.sum()) if slice_df.units_ordered.sum() else 0.0
-    ca,cb,cc,cd=st.columns(4)
-    ca.metric(T("Ventas (MXN)","Revenue (MXN)"),f"${revenue/1e6:,.2f} M")
-    cb.metric(T("Contribución (MXN)","Contribution (MXN)"),f"${contrib/1e6:,.2f} M")
-    cc.metric(T("Margen","Margin"),f"{contrib/revenue:.1%}" if revenue else "N/A")
-    cd.metric(T("Servicio","Service level"),f"{service:.1%}")
-    tr=slice_df.groupby("date",as_index=False)[["revenue","contribution"]].sum()
-    plot=tr.melt(id_vars="date",value_vars=["revenue","contribution"],
-                 var_name="measure",value_name="mxn")
-    plot["measure"]=plot["measure"].map({
-        "revenue":T("Ventas","Revenue"),
-        "contribution":T("Contribución","Contribution")})
-    st.plotly_chart(px.line(plot,x="date",y="mxn",color="measure",
-        labels={"date":T("Semana","Week"),"mxn":"MXN","measure":T("Indicador","Measure")},
-        title=T("Evolución semanal sintética","Synthetic weekly performance")),
-        use_container_width=True)
-    st.caption(T(
-        "El nivel de servicio se calcula como unidades entregadas / unidades solicitadas. No demuestra continuidad de inventario.",
-        "Service level is delivered units / ordered units. It does not demonstrate inventory continuity."
-    ))
+    render_commercial(bi_filtered,T,name_of)
 
 with tabs[2]:
-    st.subheader(T("Productos, canales y zonas", "Products, channels and regions"))
-    by_product=fact.groupby("sku",as_index=False).agg(
-        revenue=("revenue","sum"),contribution=("contribution","sum"),
-        units=("units_sold","sum"))
-    by_product["product"]=by_product.sku.map(name_of)
-    by_product["margin_pct"]=(100*by_product.contribution/by_product.revenue).round(2)
-    ranking=by_product.sort_values("contribution",ascending=False)
-    st.plotly_chart(px.bar(ranking,x="product",y="contribution",
-        labels={"product":T("Producto","Product"),"contribution":T("Contribución (MXN)","Contribution (MXN)")},
-        title=T("Contribución por producto","Contribution by product")),
-        use_container_width=True)
-    st.dataframe(ranking[["product","units","revenue","contribution","margin_pct"]]
-        .rename(columns={"product":T("Producto","Product"),"units":T("Unidades","Units"),
-                         "revenue":T("Ventas (MXN)","Revenue (MXN)"),
-                         "contribution":T("Contribución (MXN)","Contribution (MXN)"),
-                         "margin_pct":T("Margen (%)","Margin (%)")}).round(2),
-        use_container_width=True,hide_index=True)
-    channel_df=fact.groupby(["channel","zone"],as_index=False)[["revenue","contribution"]].sum()
-    st.plotly_chart(px.bar(channel_df,x="channel",y="contribution",color="zone",barmode="group",
-        labels={"channel":T("Canal","Channel"),"contribution":T("Contribución (MXN)","Contribution (MXN)"),
-                "zone":T("Zona","Region")},
-        title=T("Contribución por canal y zona","Contribution by channel and region")),
-        use_container_width=True)
-    st.caption(T(
-        "La contribución utiliza costos y precios sintéticos de sell-out. No equivale a utilidad neta ni a margen de un mayorista.",
-        "Contribution uses synthetic sell-out prices and costs. It is neither net profit nor distributor margin."
-    ))
+    render_service(bi_filtered,T,name_of)
 
 with tabs[3]:
     st.subheader(T("¿Qué método pronostica mejor?", "Which forecast works best?"))
+    st.caption(T(
+        "Comparación histórica de seis productos durante ocho semanas de evaluación. Los filtros comerciales no modifican estos resultados.",
+        "Historical six-product comparison across an eight-week holdout. Commercial filters do not alter these results."
+    ))
     total=metrics.loc[metrics.sku.eq("TOTAL")].copy()
     total["label"]=total.method.map(MODEL_LABELS)
     total["wape_pct"]=100*total.wape
@@ -417,7 +363,34 @@ with tabs[3]:
         "Projection generated from the last synthetic period in August 2026. It is not a current forecast and includes no live sales."
     ))
 
-with tabs[4]:
+
+    st.subheader(T("Errores por producto", "Product-level errors"))
+    per_product=metrics.loc[metrics.sku.eq(prod)].copy()
+    per_product["method"]=per_product.method.map(MODEL_LABELS)
+    per_product[["wape","bias"]]=100*per_product[["wape","bias"]]
+    st.dataframe(per_product[["method","mae","rmse","wape","bias"]]
+        .rename(columns={"method":T("Método","Method"),"wape":"WAPE (%)",
+            "bias":T("Sesgo (%)","Bias (%)"),"mae":"MAE","rmse":"RMSE"}).round(2),
+        hide_index=True,use_container_width=True)
+    evaluated=holdout.loc[holdout.sku.eq(prod)].copy()
+    evaluated["method"]=evaluated.method.map(MODEL_LABELS)
+    observed=evaluated.drop_duplicates("date")[["date","actual_units"]].copy()
+    observed["series"]=T("Observado","Observed")
+    observed=observed.rename(columns={"actual_units":"units"})
+    projections=evaluated[["date","forecast_units","method"]].copy()
+    projections=projections.rename(columns={"forecast_units":"units","method":"series"})
+    compared=pd.concat([observed,projections],ignore_index=True)
+    st.plotly_chart(px.line(compared,x="date",y="units",color="series",markers=True,
+        labels={"date":T("Semana","Week"),"units":T("Unidades","Units"),
+                "series":T("Serie","Series")},
+        title=T("Observado frente a los pronósticos de la evaluación",
+                "Observed versus forecasts in the evaluation")),use_container_width=True)
+    st.caption(T(
+        "El pronóstico futuro parte de agosto de 2026 con datos sintéticos. No es una predicción vigente.",
+        "The future projection starts from August 2026 synthetic data. It is not a current forecast."
+    ))
+
+with tabs[5]:
     st.subheader(T("Cómo interpretar el caso", "How to interpret this case"))
     st.write(T(
         "El conjunto contiene 104 semanas, 60 puntos de venta y seis productos simulados. "
