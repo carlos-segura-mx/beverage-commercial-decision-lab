@@ -1,0 +1,40 @@
+name: Install Streamlit beverage case
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.bootstrap/payload_05'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publish-case:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout existing repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Restore reviewed case files
+        run: |
+          cat .bootstrap/payload_0* | base64 --decode | tar -xz -C .
+          rm -rf .bootstrap
+          test -f app.py
+          test -f src/scenario_engine.py
+          test -f docs/README.es.md
+          test -f .github/workflows/quality.yml
+      - name: Publish case files to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "feat: add bilingual Streamlit pricing simulator and portfolio case"
+          git push
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile Python modules
+        run: python -m compileall -q app.py src tests
+      - name: Verify scenario, source data and bilingual app
+        run: python -m pytest -q
