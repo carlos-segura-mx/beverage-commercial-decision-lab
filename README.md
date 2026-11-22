@@ -75,4 +75,4 @@ The existing [Power BI file](powerbi/Beverage_Commercial_Decision_Lab.pbix) is p
 
 The public code has no separate open-source license selected. The synthetic dataset and code are offered here for reviewing the case and its reproducibility, not as real company data.
 
-**Carlos Segura | CS Intelligence**
+**Carlos Segura**

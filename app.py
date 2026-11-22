@@ -59,8 +59,8 @@ except (FileNotFoundError, ValueError, KeyError) as exc:
 
 st.title("Beverage Commercial Decision Lab")
 st.caption(T(
-    "CS Intelligence | Caso comercial con datos sintéticos | Precio, demanda y contribución",
-    "CS Intelligence | Synthetic commercial case | Pricing, demand and contribution"
+    "Carlos Segura | Caso comercial con datos sintéticos | Precio, demanda y contribución",
+    "Carlos Segura | Synthetic commercial case | Pricing, demand and contribution"
 ))
 st.write(T(
     "¿Dónde se genera contribución, qué puntos requieren revisión y cómo afecta un descuento al portafolio?",

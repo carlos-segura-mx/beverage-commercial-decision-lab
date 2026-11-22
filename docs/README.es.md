@@ -75,4 +75,4 @@ El [archivo Power BI](../powerbi/Beverage_Commercial_Decision_Lab.pbix) se conse
 
 No se ha seleccionado una licencia abierta independiente para el código. Los datos son sintéticos y se publican para explicar y reproducir el caso, no como información empresarial real.
 
-**Carlos Segura | CS Intelligence**
+**Carlos Segura**

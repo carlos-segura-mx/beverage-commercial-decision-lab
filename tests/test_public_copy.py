@@ -1,4 +1,4 @@
-"""Publication standards adopted in the CS Intelligence Notion playbook."""
+"""Publication standards adopted in the independent portfolio editorial guidelines."""
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
