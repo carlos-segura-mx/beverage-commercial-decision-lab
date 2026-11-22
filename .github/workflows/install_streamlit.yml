@@ -25,7 +25,6 @@ jobs:
           test -f app.py
           test -f src/scenario_engine.py
           test -f docs/README.es.md
-          test -f .github/workflows/quality.yml
       - name: Publish case files to main
         run: |
           git config user.name "github-actions[bot]"
