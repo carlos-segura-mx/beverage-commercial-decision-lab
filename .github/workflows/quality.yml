@@ -1,4 +1,4 @@
-name: Verify beverage commercial lab
+name: Beverage Commercial Decision Lab QA
 
 on:
   push:
