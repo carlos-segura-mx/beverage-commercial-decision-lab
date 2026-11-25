@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
+<title id="title">Pricing and promotion commercial sample</title>
+<desc id="desc">Synthetic portfolio impact of a ten percent Classic Coffee discount.</desc>
+<rect width="960" height="560" fill="#ffffff"/>
+<text x="55" y="58" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#111111">Beverage Commercial Decision Lab</text>
+<text x="55" y="90" font-family="Arial, sans-serif" font-size="18" fill="#444444">10% Classic Coffee discount | Descuento de 10% en Café Clásico</text>
+<line x1="480" y1="155" x2="480" y2="405" stroke="#aaaaaa" stroke-width="2"/>
+<text x="75" y="190" font-family="Arial, sans-serif" font-size="18" fill="#222222">Units / Unidades</text>
+<rect x="480" y="165" width="155" height="42" rx="5" fill="#5f7f6f"/>
+<text x="650" y="193" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="#111111">+1.94%</text>
+<text x="75" y="285" font-family="Arial, sans-serif" font-size="18" fill="#222222">Revenue / Ventas</text>
+<rect x="442" y="260" width="38" height="42" rx="5" fill="#8b6f6f"/>
+<text x="330" y="288" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="#111111">-0.48%</text>
+<text x="75" y="380" font-family="Arial, sans-serif" font-size="18" fill="#222222">Contribution / Contribución</text>
+<rect x="275" y="355" width="205" height="42" rx="5" fill="#8b6f6f"/>
+<text x="165" y="383" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="#111111">-2.59%</text>
+<text x="55" y="455" font-family="Arial, sans-serif" font-size="18" fill="#444444">37,440 synthetic records | 104 weeks | 60 points of sale | 6 products</text>
+<text x="55" y="493" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#111111">More volume does not automatically mean more value.</text>
+<text x="55" y="528" font-family="Arial, sans-serif" font-size="16" fill="#666666">Synthetic scenario. Not a causal promotion estimate or real-market recommendation.</text>
+</svg>
